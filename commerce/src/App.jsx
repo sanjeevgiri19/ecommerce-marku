@@ -1,27 +1,24 @@
-import { Link, Route, Routes } from "react-router-dom"
-import Home from "./componentas/Home.jsx"
-import Navbar from "./componentas/Navbar.jsx"
-// import Navbar from "./componentas/Navbar"
-import Products from "./componentas/Products.jsx"
-
-
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./componentas/Home.jsx";
+import Navbar from "./componentas/Navbar.jsx";
+import Products from "./componentas/Products";
 
 function App() {
-
   return (
     <>
       <div className="w-full h-screen flex">
 
-        {/* <Link to="/">Home</Link>
-        <Link to="/products">Products</Link> */}
+        {/* Uncomment these links if you want to add navigation */}
+        {/* <Link to="/" className="p-2">Home</Link>
+        <Link to="/products/1" className="p-2">Products</Link> */}
 
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/products" element={<Products />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/products/:id" element={<Products />} />
         </Routes>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
