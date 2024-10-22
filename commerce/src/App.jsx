@@ -1,9 +1,9 @@
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./componentas/Home.jsx";
 // import Navbar from "./components/Navbar.jsx";
-// import Products from "./components/Products";
 import Products from "./componentas/Products";
 import Create from "./componentas/Create.jsx";
+import Edit from "./componentas/Edit.jsx";
 
 function App() {
   const { search, pathname } = useLocation();
@@ -25,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<Create />} />
           <Route path="/products/:id" element={<Products />} />
+          <Route path="/edit/:id" element={<Edit />} />
         </Routes>
       </div>
     </>

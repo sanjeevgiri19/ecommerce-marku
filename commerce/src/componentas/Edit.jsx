@@ -1,49 +1,47 @@
-import React, { useContext, useState } from "react";
-import { ProductContext } from "../utils/Context";
-import { nanoid } from "nanoid";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
 
-const Create = () => {
-  const [products, setProducts] = useContext(ProductContext);
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+const Edit = () => {
 
-  const navigate = useNavigate()
+   const [products, setProducts] = useContext(ProductContext);
+   const [title, setTitle] = useState("");
+   const [image, setImage] = useState("");
+   const [category, setCategory] = useState("");
+   const [price, setPrice] = useState("");
+   const [description, setDescription] = useState("");
 
-  const AddProductHandler = (e) => {
-    e.preventDefault();
+   const navigate = useNavigate();
 
-    if (
-      title.trim().length < 5 ||
-      category.trim().length < 5 ||
-      image.trim().length < 5 ||
-      price.trim().length < 1 ||
-      description.trim().length < 5
-    ) {
-      alert("Each input must have some specific characters");
-      return;
-    }
+   const AddProductHandler = (e) => {
+     e.preventDefault();
 
-    const id = nanoid();
-    const product = {
-      id,
-      title,
-      image,
-      category,
-      price,
-      description,
-    };
-    
-    console.log(product);
+     if (
+       title.trim().length < 5 ||
+       category.trim().length < 5 ||
+       image.trim().length < 5 ||
+       price.trim().length < 1 ||
+       description.trim().length < 5
+     ) {
+       alert("Each input must have some specific characters");
+       return;
+     }
 
-    // Update the products state safely
-    setProducts((products) => [...products, product]);
-    localStorage.setItem("products", JSON.stringify([...products, product]));
-    navigate("/");
-  };
+     const id = nanoid();
+     const product = {
+       id,
+       title,
+       image,
+       category,
+       price,
+       description,
+     };
+
+     console.log(product);
+
+     // Update the products state safely
+     setProducts((products) => [...products, product]);
+     localStorage.setItem("products", JSON.stringify([...products, product]));
+     navigate("/");
+   };
 
   return (
     <form
@@ -95,6 +93,6 @@ const Create = () => {
       </div>
     </form>
   );
-};
+}
 
-export default Create;
+export default Edit

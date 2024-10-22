@@ -30,7 +30,9 @@ const Home = () => {
   useEffect(() => {
     if (!filteredProducts || category == "undefined")
       setfilteredProducts(products); //if filteredproduct ko value xaina or category undefined xa vane setfilteredproduct ma products halne
-    if (category != "undefined") getProductCategory(); // if category undefined xa vane getproductcategory call hanne
+    if (category != "undefined") 
+      // getProductCategory(); 
+    setfilteredProducts(products.filter((p) => p.category == category))
   }, [category, products]); //every refresh ma chalxa
 
   // console.log(filteredProducts);
@@ -59,7 +61,7 @@ const Home = () => {
       </div>
     </>
   ) : (
-    // CircularIndeterminate
+    
     <CircularProgress />
   );
 };

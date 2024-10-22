@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
 import axios from "../utils/axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import CircularIndeterminate from "./Loading";
 
 const Products = () => {
+
+  const navigate = useNavigate();
   const [products, setProducts] = useContext(ProductContext);
   const [product, setproduct] = useState(null);
 
@@ -28,6 +30,12 @@ const Products = () => {
     }
   }, []);
 
+  const deleteHandler = (id) => {
+    const filteredProducts = products.filter((p) => p.id !== id)
+    setProducts(filteredProducts);
+    localStorage.setItem("products", JSON.stringify(filteredProducts))
+    navigate("/");
+  }
   
 
   return product ? (
@@ -51,12 +59,13 @@ const Products = () => {
             <h2 className="font-medium my-3">$ {product.price} </h2>
             <p className=" mb-6"> {product.description} </p>
             <div>
-              <Link className="mr-3  px-4 py-1 border border-blue-400 text-blue-500">
+              <Link to={`/edit/${product.id}`} className="mr-3  px-4 py-1 border border-blue-400 text-blue-500">
                 Edit
               </Link>
-              <Link className="  px-4 font-medium py-1 border border-red-400 text-red-500">
+
+              <button onClick={() => deleteHandler(product.id)} className="  px-4 font-medium py-1 border border-red-400 text-red-500">
                 Delete
-              </Link>
+              </button>
             </div>
           </div>
         </div>

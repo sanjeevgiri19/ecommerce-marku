@@ -19,9 +19,7 @@ const Navbar = () => {
       Math.random() * 255
     ).toFixed(0)}, ${(Math.random() * 255).toFixed(0)}, 0.5)`;
   };
-  // In Navbar.jsx
-  console.log("Products:", products);
-  console.log("Type of products:", typeof products);
+ 
 
   return (
     <nav className="w-[20%] bg-zinc-200 h-full px-2 py-5">
@@ -37,7 +35,7 @@ const Navbar = () => {
 
       <ul>
         {distinctCategory.map((catg, index) => (
-          <Link key={catg} to={`/?category=${catg}`}>
+          <Link key={index} to={`/?category=${catg}`}>
             <li className="list-none flex items-center mb-2">
               <div
                 style={{ backgroundColor: generateColor() }}
