@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
-import axios from "../utils/axios";
+// import axios from "../utils/axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import CircularIndeterminate from "./Loading";
+import { toast } from "react-toastify";
 
 const Products = () => {
 
@@ -34,6 +35,7 @@ const Products = () => {
     const filteredProducts = products.filter((p) => p.id !== id)
     setProducts(filteredProducts);
     localStorage.setItem("products", JSON.stringify(filteredProducts))
+    toast.error("Product Deleted Successfully")
     navigate("/");
   }
   

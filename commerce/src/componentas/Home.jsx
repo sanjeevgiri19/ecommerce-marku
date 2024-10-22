@@ -15,17 +15,17 @@ const Home = () => {
   // console.log(search);
   const category = decodeURIComponent(search.split("=")[1]); //decodeURIComponent() is  used to extract and decode a query parameter from a URL's search string.
   // console.log(category);
-
+  
   const [filteredProducts, setfilteredProducts] = useState(null);
-
-  const getProductCategory = async () => {
-    try {
-      const { data } = await axios.get(`/products/category/${category}`);
-      setfilteredProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
+  // const getProductCategory = async () => {
+    //   try {
+      //     const { data } = await axios.get(`/products/category/${category}`);
+      //     setfilteredProducts(data);
+      //   } catch (error) {
+      //  console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
     if (!filteredProducts || category == "undefined")
@@ -40,7 +40,7 @@ const Home = () => {
   return products ? (
     <>
       <Navbar />
-      <div className="w-[85%] mx-auto pt-20 grid grid-cols-4 gap-2">
+      <div className="w-[85%] h-52 pt-20 grid grid-cols-4 gap-2">
         {filteredProducts &&
           filteredProducts.map((product, index) => (
             <Link

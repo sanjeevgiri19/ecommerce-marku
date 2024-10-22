@@ -22,7 +22,7 @@ const Navbar = () => {
  
 
   return (
-    <nav className="w-[20%] bg-zinc-200 h-full px-2 py-5">
+    <nav className="w-[20%] h-full px-2 py-5">
       <div className="h-10 w-36 m-auto border mb-4 border-blue-400 rounded-md flex items-center justify-center ">
         <Link to="/create" className="text-regular text-blue-400 ">
           Add New Products

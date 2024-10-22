@@ -7,7 +7,7 @@ import Edit from "./componentas/Edit.jsx";
 
 function App() {
   const { search, pathname } = useLocation();
-  console.log(search, pathname);
+  // console.log(search, pathname);
 
   return (
     <>
