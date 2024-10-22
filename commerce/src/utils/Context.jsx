@@ -1,33 +1,34 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from "react";
 // import Products from '../componentas/Products';
-import axios from './axios';
+import axios from "./axios";
 
 export const ProductContext = createContext();
 
 const Context = (props) => {
-
   const [products, setProducts] = useState(null);
 
   const getProducts = async () => {
     try {
       const { data } = await axios("/products");
       console.log(data);
-     setProducts(data)
-
+      setProducts(data);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getProducts();
-  }, [])
+  }, []);
+
+  console.log(products);
+  
 
   return (
-    <ProductContext.Provider value={[products, setProducts]}> 
-      {props.children} 
+    <ProductContext.Provider value={[products, setProducts]}>
+      {props.children}
     </ProductContext.Provider>
-  )
-}
+  );
+};
 
-export default Context
+export default Context;
